@@ -1,0 +1,33 @@
+"Phrases"
+{
+    "Prefix"
+    {
+        "en"    "{coral}[Trophy weapon]{default} "
+    }
+
+    "You picked up trophy weapon"
+    {
+        "#format"   "{1:s}"
+        "en"    "You have picked up trophy weapon {yellow}{1}"
+    }
+
+    "No trophy weapon"
+    {
+        "en"    "You no longer have trophy weapon"
+    }
+
+    "Give trophy weapon"
+    {
+        "en"    "Give trophy weapon?"
+    }
+
+    "Yes"
+    {
+        "en"    "Yes"
+    }
+
+    "No"
+    {
+        "en"    "No"
+    }
+}

@@ -13,8 +13,42 @@ static const char g_weaponClassName[][] = {
     "weapon_pschreck"
 };
 
+static const char g_weaponName[][] = {
+    "M1 Garand",
+    "M1 Thompson",
+    "BAR",
+    "Springfield",
+    "M1919",
+    "Bazooka",
+    "Kar98k",
+    "MP40",
+    "MP44",
+    "Scoped Kar98k",
+    "MG42",
+    "Panzerschreck"
+};
+
 static const int g_ammo[] = {80, 180, 240, 50, 300, 4, 60, 180, 180, 60, 250, 4};
 static int g_trophyIndex[MAXPLAYERS + 1];
+static StringMap g_weaponIndex = null;
+
+void Weapon_Create() {
+    g_weaponIndex = new StringMap();
+
+    for (int i = 0; i < sizeof(g_weaponClassName); i++) {
+        g_weaponIndex.SetValue(g_weaponClassName[i], i);
+    }
+}
+
+void Weapon_Destroy() {
+    delete g_weaponIndex;
+}
+
+void Weapon_GetName(int weapon, char weaponName[WEAPON_NAME_SIZE]) {
+    int index = Weapon_GetIndex(weapon);
+
+    strcopy(weaponName, WEAPON_NAME_SIZE, g_weaponName[index]);
+}
 
 bool Weapon_IsTrophyExists(int client) {
     return g_trophyIndex[client] != INDEX_NOT_FOUND;
@@ -25,11 +59,7 @@ void Weapon_ResetTrophy(int client) {
 }
 
 void Weapon_SetTrophy(int client, int weapon) {
-    int primaryWeapon = Weapon_GetPrimary(client);
-
-    if (weapon == primaryWeapon) {
-        g_trophyIndex[client] = Weapon_GetIndex(weapon);
-    }
+    g_trophyIndex[client] = Weapon_GetIndex(weapon);
 }
 
 void Weapon_RemovePrimary(int client) {
@@ -59,16 +89,13 @@ void Weapon_GiveAmmo(int client, int weapon) {
 
 int Weapon_GetIndex(int weapon) {
     char weaponClassName[WEAPON_CLASS_NAME_SIZE];
+    int index = INDEX_NOT_FOUND;
 
     GetEntityClassname(weapon, weaponClassName, sizeof(weaponClassName));
 
-    for (int i = 0; i < sizeof(g_weaponClassName); i++) {
-        if (strcmp(weaponClassName, g_weaponClassName[i]) == 0) {
-            return i;
-        }
-    }
+    g_weaponIndex.GetValue(weaponClassName, index);
 
-    return INDEX_NOT_FOUND;
+    return index;
 }
 
 void Weapon_SetAsActive(int client, int weapon) {
