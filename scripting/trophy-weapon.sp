@@ -23,7 +23,7 @@ public Plugin myinfo = {
     name = "Trophy weapon",
     author = "Dron-elektron",
     description = "Allows you to carry trophy weapon to the next round",
-    version = "1.0.0",
+    version = "1.1.0",
     url = "https://github.com/dronelektron/trophy-weapon"
 };
 
