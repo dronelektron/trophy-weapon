@@ -1,0 +1,27 @@
+"Phrases"
+{
+    "You picked up trophy weapon"
+    {
+        "ru"    "Вы подобрали трофейное оружие {yellow}{1}"
+    }
+
+    "No trophy weapon"
+    {
+        "ru"    "У вас уже нет трофейного оружия"
+    }
+
+    "Give trophy weapon"
+    {
+        "ru"    "Дать трофейное оружие?"
+    }
+
+    "Yes"
+    {
+        "ru"    "Да"
+    }
+
+    "No"
+    {
+        "ru"    "Нет"
+    }
+}

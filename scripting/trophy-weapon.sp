@@ -2,10 +2,17 @@
 #include <sdktools>
 #include <sdkhooks>
 
+#include "morecolors"
+
+#include "tw/menu"
+#include "tw/message"
+#include "tw/use-case"
 #include "tw/weapon"
 
 #include "modules/console-variable.sp"
 #include "modules/event.sp"
+#include "modules/menu.sp"
+#include "modules/message.sp"
 #include "modules/use-case.sp"
 #include "modules/weapon.sp"
 
@@ -29,7 +36,13 @@ public void OnAllPluginsLoaded() {
 public void OnPluginStart() {
     Variable_Create();
     Event_Create();
+    Weapon_Create();
+    LoadTranslations("trophy-weapon.phrases");
     AutoExecConfig(AUTO_CREATE_YES, "trophy-weapon");
+}
+
+public void OnPluginEnd() {
+    Weapon_Destroy();
 }
 
 public void OnClientConnected(int client) {
