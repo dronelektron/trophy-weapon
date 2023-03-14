@@ -24,11 +24,7 @@ void UseCase_DisableTrophyWeapons() {
 
 void UseCaseHook_SetTrophyWeapon(int client, int weapon) {
     if (UseCase_IsPrimaryWeapon(client, weapon) && UseCase_IsTrophyWeapon(client, weapon)) {
-        char weaponName[WEAPON_NAME_SIZE];
-
         Weapon_SetTrophy(client, weapon);
-        Weapon_GetName(weapon, weaponName);
-        Message_YouPickedUpTrophyWeapon(client, weaponName);
     } else {
         Weapon_ResetTrophy(client);
     }
