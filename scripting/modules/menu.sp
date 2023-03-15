@@ -48,7 +48,7 @@ void Menu_GiveTrophyWeapon(int client) {
     menu.SetTitle("%T", GIVE_TROPHY_WEAPON, client);
 
     Menu_AddItem(menu, ITEM_YES, "%T", ITEM_YES, client);
-    Menu_AddItem(menu, ITEM_YES, "%T", ITEM_NO, client);
+    Menu_AddItem(menu, ITEM_NO, "%T", ITEM_NO, client);
 
     menu.ExitButton = false;
     menu.Display(client, ASK_FOR_TROPHY_WEAPON_TIME);
