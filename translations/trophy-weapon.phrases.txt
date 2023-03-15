@@ -1,16 +1,5 @@
 "Phrases"
 {
-    "Prefix"
-    {
-        "en"    "{coral}[Trophy weapon]{default} "
-    }
-
-    "Trophy weapon mode changed"
-    {
-        "#format"   "{1:t}"
-        "en"    "Trophy weapon mode changed to {yellow}{1}"
-    }
-
     "Trophy weapon"
     {
         "en"    "Trophy weapon"
