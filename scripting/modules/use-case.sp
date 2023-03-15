@@ -50,8 +50,20 @@ void UseCase_GiveTrophyWeapons() {
 
     for (int client = 1; client <= MaxClients; client++) {
         if (IsClientInGame(client)) {
-            UseCase_AskForTrophyWeapon(client);
+            UseCase_CheckTrophyWeaponMode(client);
         }
+    }
+}
+
+void UseCase_CheckTrophyWeaponMode(int client) {
+    char cookieValue[COOKIE_VALUE_SIZE];
+
+    Cookie_GetTrophyWeaponMode(client, cookieValue);
+
+    if (strcmp(cookieValue, COOKIE_VALUE_ASK) == 0) {
+        UseCase_AskForTrophyWeapon(client);
+    } else if (strcmp(cookieValue, COOKIE_VALUE_GIVE_ALWAYS) == 0) {
+        UseCase_GiveTrophyWeapon(client);
     }
 }
 
@@ -81,7 +93,21 @@ void UseCase_GiveTrophyWeapon(int client) {
 
         Weapon_GiveAmmo(client, weapon);
         Weapon_SetAsActive(client, weapon);
-    } else {
-        Message_NoTrophyWeapon(client);
     }
+}
+
+void UseCase_ChangeTrophyWeaponMode(int client, const char[] mode) {
+    Cookie_SetTrophyWeaponMode(client, mode);
+
+    char phrase[PHRASE_SIZE];
+
+    if (strcmp(mode, COOKIE_VALUE_ASK) == 0) {
+        strcopy(phrase, sizeof(phrase), ITEM_ASK);
+    } else if (strcmp(mode, COOKIE_VALUE_GIVE_ALWAYS) == 0) {
+        strcopy(phrase, sizeof(phrase), ITEM_GIVE_ALWAYS);
+    } else {
+        strcopy(phrase, sizeof(phrase), ITEM_GIVE_NEVER);
+    }
+
+    Message_TrophyWeaponModeChanged(client, phrase);
 }

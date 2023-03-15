@@ -1,3 +1,3 @@
-void Message_NoTrophyWeapon(int client) {
-    CPrintToChat(client, "%t%t", PREFIX_COLORED, "No trophy weapon");
+void Message_TrophyWeaponModeChanged(int client, const char[] phrase) {
+    CPrintToChat(client, "%t%t", PREFIX_COLORED, "Trophy weapon mode changed", phrase);
 }
