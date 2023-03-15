@@ -3,7 +3,9 @@ void UseCase_HookWeaponDrop(int client) {
 }
 
 public void UseCaseHook_WeaponDropPost(int client, int weapon) {
-    Weapon_ResetTrophy(client);
+    if (UseCase_IsPrimaryWeapon(client, weapon)) {
+        Weapon_ResetTrophy(client);
+    }
 }
 
 void UseCase_EnableTrophyWeapons() {
@@ -23,7 +25,11 @@ void UseCase_DisableTrophyWeapons() {
 }
 
 void UseCaseHook_SetTrophyWeapon(int client, int weapon) {
-    if (UseCase_IsPrimaryWeapon(client, weapon) && UseCase_IsTrophyWeapon(client, weapon)) {
+    if (!UseCase_IsPrimaryWeapon(client, weapon)) {
+        return;
+    }
+
+    if (UseCase_IsTrophyWeapon(client, weapon)) {
         Weapon_SetTrophy(client, weapon);
     } else {
         Weapon_ResetTrophy(client);
