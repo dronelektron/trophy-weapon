@@ -29,7 +29,7 @@ public int MenuHandler_Settings(Menu menu, MenuAction action, int param1, int pa
 
         menu.GetItem(param2, info, sizeof(info));
 
-        UseCase_ChangeTrophyWeaponMode(param1, info);
+        Cookie_SetTrophyWeaponMode(param1, info);
         Menu_Settings(param1);
     } else if (action == MenuAction_Cancel) {
         if (param2 == MenuCancel_ExitBack) {

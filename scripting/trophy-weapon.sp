@@ -7,7 +7,6 @@
 
 #include "tw/cookie"
 #include "tw/menu"
-#include "tw/message"
 #include "tw/use-case"
 #include "tw/weapon"
 
@@ -15,7 +14,6 @@
 #include "modules/cookie.sp"
 #include "modules/event.sp"
 #include "modules/menu.sp"
-#include "modules/message.sp"
 #include "modules/use-case.sp"
 #include "modules/weapon.sp"
 

@@ -1,10 +1,5 @@
 "Phrases"
 {
-    "Trophy weapon mode changed"
-    {
-        "ru"    "Режим трофейного оружия изменен на {yellow}{1}"
-    }
-
     "Trophy weapon"
     {
         "ru"    "Трофейное оружие"

@@ -117,19 +117,3 @@ void UseCase_GiveTrophyWeapon(int client) {
         Weapon_SetAsActive(client, weapon);
     }
 }
-
-void UseCase_ChangeTrophyWeaponMode(int client, const char[] mode) {
-    Cookie_SetTrophyWeaponMode(client, mode);
-
-    char phrase[PHRASE_SIZE];
-
-    if (strcmp(mode, COOKIE_VALUE_ASK) == 0) {
-        strcopy(phrase, sizeof(phrase), ITEM_ASK);
-    } else if (strcmp(mode, COOKIE_VALUE_GIVE_ALWAYS) == 0) {
-        strcopy(phrase, sizeof(phrase), ITEM_GIVE_ALWAYS);
-    } else {
-        strcopy(phrase, sizeof(phrase), ITEM_GIVE_NEVER);
-    }
-
-    Message_TrophyWeaponModeChanged(client, phrase);
-}
