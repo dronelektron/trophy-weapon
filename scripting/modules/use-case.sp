@@ -61,25 +61,41 @@ void UseCase_CheckTrophyWeaponMode(int client) {
     Cookie_GetTrophyWeaponMode(client, cookieValue);
 
     if (strcmp(cookieValue, COOKIE_VALUE_ASK) == 0) {
-        UseCase_AskForTrophyWeapon(client);
+        UseCase_AskForTrophyWeaponDelayed(client);
     } else if (strcmp(cookieValue, COOKIE_VALUE_GIVE_ALWAYS) == 0) {
-        UseCase_GiveTrophyWeapon(client);
+        UseCase_GiveTrophyWeaponDelayed(client);
     }
 }
 
-void UseCase_AskForTrophyWeapon(int client) {
+void UseCase_AskForTrophyWeaponDelayed(int client) {
     if (Weapon_IsTrophyExists(client) && IsPlayerAlive(client)) {
         int userId = GetClientUserId(client);
 
-        CreateTimer(TIMER_GIVE_TROPHY_WEAPON_DELAY, UseCaseTimer_GiveTrophyWeapon, userId, TIMER_GIVE_TROPHY_WEAPON_FLAGS);
+        CreateTimer(TIMER_GIVE_TROPHY_WEAPON_DELAY, UseCaseTimer_AskForTrophyWeapon, userId, TIMER_GIVE_TROPHY_WEAPON_FLAGS);
     }
+}
+
+public Action UseCaseTimer_AskForTrophyWeapon(Handle timer, int userId) {
+    int client = GetClientOfUserId(userId);
+
+    if (client != INVALID_CLIENT) {
+        Menu_GiveTrophyWeapon(client);
+    }
+
+    return Plugin_Continue;
+}
+
+void UseCase_GiveTrophyWeaponDelayed(int client) {
+    int userId = GetClientUserId(client);
+
+    CreateTimer(TIMER_GIVE_TROPHY_WEAPON_DELAY, UseCaseTimer_GiveTrophyWeapon, userId, TIMER_GIVE_TROPHY_WEAPON_FLAGS);
 }
 
 public Action UseCaseTimer_GiveTrophyWeapon(Handle timer, int userId) {
     int client = GetClientOfUserId(userId);
 
     if (client != INVALID_CLIENT) {
-        Menu_GiveTrophyWeapon(client);
+        UseCase_GiveTrophyWeapon(client);
     }
 
     return Plugin_Continue;
