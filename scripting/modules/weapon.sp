@@ -13,21 +13,6 @@ static const char g_weaponClassName[][] = {
     "weapon_pschreck"
 };
 
-static const char g_weaponName[][] = {
-    "M1 Garand",
-    "M1 Thompson",
-    "BAR",
-    "Springfield",
-    "M1919",
-    "Bazooka",
-    "Kar98k",
-    "MP40",
-    "MP44",
-    "Scoped Kar98k",
-    "MG42",
-    "Panzerschreck"
-};
-
 static const int g_ammo[] = {80, 180, 240, 50, 300, 4, 60, 180, 180, 60, 250, 4};
 static int g_trophyIndex[MAXPLAYERS + 1];
 static StringMap g_weaponIndex = null;
@@ -42,12 +27,6 @@ void Weapon_Create() {
 
 void Weapon_Destroy() {
     delete g_weaponIndex;
-}
-
-void Weapon_GetName(int weapon, char weaponName[WEAPON_NAME_SIZE]) {
-    int index = Weapon_GetIndex(weapon);
-
-    strcopy(weaponName, WEAPON_NAME_SIZE, g_weaponName[index]);
 }
 
 bool Weapon_IsTrophyExists(int client) {

@@ -1,13 +1,28 @@
 "Phrases"
 {
-    "You picked up trophy weapon"
+    "Trophy weapon mode changed"
     {
-        "ru"    "Вы подобрали трофейное оружие {yellow}{1}"
+        "ru"    "Режим трофейного оружия изменен на {yellow}{1}"
     }
 
-    "No trophy weapon"
+    "Trophy weapon"
     {
-        "ru"    "У вас уже нет трофейного оружия"
+        "ru"    "Трофейное оружие"
+    }
+
+    "Ask"
+    {
+        "ru"    "Спрашивать"
+    }
+
+    "Always give"
+    {
+        "ru"    "Всегда давать"
+    }
+
+    "Never give"
+    {
+        "ru"    "Никогда не давать"
     }
 
     "Give trophy weapon"

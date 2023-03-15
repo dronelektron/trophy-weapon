@@ -5,15 +5,30 @@
         "en"    "{coral}[Trophy weapon]{default} "
     }
 
-    "You picked up trophy weapon"
+    "Trophy weapon mode changed"
     {
-        "#format"   "{1:s}"
-        "en"    "You have picked up trophy weapon {yellow}{1}"
+        "#format"   "{1:t}"
+        "en"    "Trophy weapon mode changed to {yellow}{1}"
     }
 
-    "No trophy weapon"
+    "Trophy weapon"
     {
-        "en"    "You no longer have trophy weapon"
+        "en"    "Trophy weapon"
+    }
+
+    "Ask"
+    {
+        "en"    "Ask"
+    }
+
+    "Always give"
+    {
+        "en"    "Always give"
+    }
+
+    "Never give"
+    {
+        "en"    "Never give"
     }
 
     "Give trophy weapon"
