@@ -8,7 +8,7 @@ Allows you to carry trophy weapon to the next round
 
 ### Installation
 
-* Download latest [release](https://github.com/dronelektron/trophy-weapon/releases) (compiled for SourceMod 1.10)
+* Download latest [release](https://github.com/dronelektron/trophy-weapon/releases) (compiled for SourceMod 1.11)
 * Extract "plugins" folder to "addons/sourcemod" folder of your server
 * Install [round-respawn-detector](https://github.com/dronelektron/round-respawn-detector)
 
