@@ -62,13 +62,13 @@ void UseCase_GiveTrophyWeapons() {
 }
 
 void UseCase_CheckTrophyWeaponMode(int client) {
-    char cookieValue[COOKIE_VALUE_SIZE];
+    char cookieValue[COOKIE_TROPHY_MODE_SIZE];
 
-    Cookie_GetTrophyWeaponMode(client, cookieValue);
+    Cookie_GetTrophyMode(client, cookieValue);
 
-    if (strcmp(cookieValue, COOKIE_VALUE_ASK) == 0) {
+    if (strcmp(cookieValue, COOKIE_TROPHY_MODE_ASK) == 0) {
         UseCase_AskForTrophyWeaponDelayed(client);
-    } else if (strcmp(cookieValue, COOKIE_VALUE_GIVE_ALWAYS) == 0) {
+    } else if (strcmp(cookieValue, COOKIE_TROPHY_MODE_GIVE_ALWAYS) == 0) {
         UseCase_GiveTrophyWeaponDelayed(client);
     }
 }

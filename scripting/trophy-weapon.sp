@@ -50,7 +50,6 @@ public void OnPluginEnd() {
 }
 
 public void OnClientConnected(int client) {
-    Cookie_Reset(client);
     Weapon_ResetTrophy(client);
 }
 

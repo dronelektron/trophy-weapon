@@ -15,9 +15,9 @@ public void Menu_Settings(int client) {
 
     menu.SetTitle("%T", TROPHY_WEAPON, client);
 
-    Menu_AddModeItem(menu, COOKIE_VALUE_ASK, ITEM_ASK, client);
-    Menu_AddModeItem(menu, COOKIE_VALUE_GIVE_ALWAYS, ITEM_GIVE_ALWAYS, client);
-    Menu_AddModeItem(menu, COOKIE_VALUE_GIVE_NEVER, ITEM_GIVE_NEVER, client);
+    Menu_AddModeItem(menu, client, COOKIE_TROPHY_MODE_ASK, ITEM_ASK);
+    Menu_AddModeItem(menu, client, COOKIE_TROPHY_MODE_GIVE_ALWAYS, ITEM_GIVE_ALWAYS);
+    Menu_AddModeItem(menu, client, COOKIE_TROPHY_MODE_GIVE_NEVER, ITEM_GIVE_NEVER);
 
     menu.ExitBackButton = true;
     menu.Display(client, MENU_TIME_FOREVER);
@@ -29,7 +29,7 @@ public int MenuHandler_Settings(Menu menu, MenuAction action, int param1, int pa
 
         menu.GetItem(param2, info, sizeof(info));
 
-        Cookie_SetTrophyWeaponMode(param1, info);
+        Cookie_SetTrophyMode(param1, info);
         Menu_Settings(param1);
     } else if (action == MenuAction_Cancel) {
         if (param2 == MenuCancel_ExitBack) {
@@ -80,19 +80,20 @@ void Menu_AddAskItem(Menu menu, const char[] phrase, int client) {
     menu.AddItem(phrase, item);
 }
 
-void Menu_AddModeItem(Menu menu, const char[] mode, const char[] phrase, int client) {
+void Menu_AddModeItem(Menu menu, int client, const char[] mode, const char[] phrase) {
     char item[ITEM_SIZE];
     int style = Menu_GetItemStyleForMode(client, mode);
 
-    Format(item, sizeof(item), "%T", phrase, client);
+    SetGlobalTransTarget(client);
+    Format(item, sizeof(item), "%t", phrase);
 
     menu.AddItem(mode, item, style);
 }
 
 int Menu_GetItemStyleForMode(int client, const char[] mode) {
-    char cookieValue[COOKIE_VALUE_SIZE];
+    char trophyMode[COOKIE_TROPHY_MODE_SIZE];
 
-    Cookie_GetTrophyWeaponMode(client, cookieValue);
+    Cookie_GetTrophyMode(client, trophyMode);
 
-    return strcmp(cookieValue, mode) == 0 ? ITEMDRAW_DISABLED : ITEMDRAW_DEFAULT;
+    return strcmp(trophyMode, mode) == 0 ? ITEMDRAW_DISABLED : ITEMDRAW_DEFAULT;
 }
