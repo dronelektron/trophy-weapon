@@ -3,8 +3,6 @@
 #include <sdkhooks>
 #include <clientprefs>
 
-#include "morecolors"
-
 #include "tw/cookie"
 #include "tw/menu"
 #include "tw/use-case"
