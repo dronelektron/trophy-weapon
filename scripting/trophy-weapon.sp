@@ -3,10 +3,10 @@
 #include <sdkhooks>
 #include <clientprefs>
 
-#include "tw/cookie"
-#include "tw/menu"
-#include "tw/use-case"
-#include "tw/weapon"
+#include "trophy-weapon/cookie"
+#include "trophy-weapon/menu"
+#include "trophy-weapon/use-case"
+#include "trophy-weapon/weapon"
 
 #include "modules/console-variable.sp"
 #include "modules/cookie.sp"

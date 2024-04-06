@@ -1,7 +1,7 @@
-#if defined _tw_weapon_included
+#if defined _trophy_weapon_weapon_included
  #endinput
 #endif
-#define _tw_weapon_included
+#define _trophy_weapon_weapon_included
 
 #define AMMO_TYPE_SIZE 4
 #define CHANGE_STATE_YES true

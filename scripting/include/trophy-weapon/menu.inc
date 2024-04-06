@@ -1,7 +1,7 @@
-#if defined _tw_menu_included
+#if defined _trophy_weapon_menu_included
  #endinput
 #endif
-#define _tw_menu_included
+#define _trophy_weapon_menu_included
 
 #define ASK_FOR_TROPHY_WEAPON_TIME 8
 #define INFO_SIZE 128
