@@ -3,12 +3,10 @@
 #include <sdkhooks>
 #include <clientprefs>
 
-#include "morecolors"
-
-#include "tw/cookie"
-#include "tw/menu"
-#include "tw/use-case"
-#include "tw/weapon"
+#include "trophy-weapon/cookie"
+#include "trophy-weapon/menu"
+#include "trophy-weapon/use-case"
+#include "trophy-weapon/weapon"
 
 #include "modules/console-variable.sp"
 #include "modules/cookie.sp"
@@ -24,7 +22,7 @@ public Plugin myinfo = {
     name = "Trophy weapon",
     author = "Dron-elektron",
     description = "Allows you to carry trophy weapon to the next round",
-    version = "1.3.1",
+    version = "1.3.2",
     url = "https://github.com/dronelektron/trophy-weapon"
 };
 

@@ -1,7 +1,7 @@
-#if defined _tw_use_case_included
+#if defined _trophy_weapon_use_case_included
  #endinput
 #endif
-#define _tw_use_case_included
+#define _trophy_weapon_use_case_included
 
 #define INVALID_CLIENT 0
 #define TEAM_ALLIES 2

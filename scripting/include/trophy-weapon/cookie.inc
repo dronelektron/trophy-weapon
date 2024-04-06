@@ -1,7 +1,7 @@
-#if defined _tw_cookie_included
+#if defined _trophy_weapon_cookie_included
  #endinput
 #endif
-#define _tw_cookie_included
+#define _trophy_weapon_cookie_included
 
 #define NULL_CHARACTER '\0'
 
