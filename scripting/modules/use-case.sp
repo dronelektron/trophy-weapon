@@ -36,12 +36,7 @@ void UseCase_GiveTrophyWeapon(int client) {
         return;
     }
 
-    Weapon_RemovePrimary(client);
-
-    int weapon = Weapon_GiveTrophy(client);
-
-    Weapon_SetAsActive(client, weapon);
-    Weapon_GiveAmmo(client, weapon);
+    Weapon_GiveTrophy(client)
 }
 
 void UseCase_CheckTrophyWeaponMode(int client) {

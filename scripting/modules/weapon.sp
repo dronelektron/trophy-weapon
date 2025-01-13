@@ -58,7 +58,17 @@ bool Weapon_IsPrimaryIndex(int index) {
     return index > INDEX_NOT_FOUND;
 }
 
-void Weapon_RemovePrimary(int client) {
+void Weapon_GiveTrophy(int client) {
+    RemovePrimary(client);
+
+    int index = Client_GetPendingIndex(client);
+    int weapon = GivePlayerItem(client, g_weaponClassName[index]);
+
+    SetAsActive(client, weapon);
+    GiveAmmo(client, weapon);
+}
+
+static void RemovePrimary(int client) {
     int weapon = GetPlayerWeaponSlot(client, WEAPON_SLOT_PRIMARY);
 
     if (weapon > INDEX_NOT_FOUND) {
@@ -67,22 +77,17 @@ void Weapon_RemovePrimary(int client) {
     }
 }
 
-int Weapon_GiveTrophy(int client) {
-    int index = Client_GetPendingIndex(client);
-
-    return GivePlayerItem(client, g_weaponClassName[index]);
-}
-
-void Weapon_SetAsActive(int client, int weapon) {
+static void SetAsActive(int client, int weapon) {
     SetEntPropEnt(client, Prop_Send, "m_hActiveWeapon", weapon);
 }
 
-void Weapon_GiveAmmo(int client, int weapon) {
-    int ammoTableOffset = FindSendPropInfo("CDODPlayer", "m_iAmmo");
-    int ammoType = GetEntProp(weapon, Prop_Send, "m_iPrimaryAmmoType");
-    int ammoOffset = ammoTableOffset + ammoType * AMMO_TYPE_SIZE;
+static void GiveAmmo(int client, int weapon) {
     int index = Weapon_GetIndex(weapon);
-    int ammo = g_ammo[index];
+    int ammoType = GetAmmoType(weapon);
 
-    SetEntData(client, ammoOffset, ammo, _, CHANGE_STATE_YES);
+    GivePlayerAmmo(client, g_ammo[index], ammoType);
+}
+
+static int GetAmmoType(int weapon) {
+    return GetEntProp(weapon, Prop_Send, "m_iPrimaryAmmoType");
 }
