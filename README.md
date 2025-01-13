@@ -6,12 +6,11 @@ Allows you to carry trophy weapon to the next round
 
 * Day of Defeat: Source
 
+### Requirements
+
+* [SourceMod](https://www.sourcemod.net) 1.11 or later
+
 ### Installation
 
-* Download latest [release](https://github.com/dronelektron/trophy-weapon/releases) (compiled for SourceMod 1.11)
-* Extract "plugins" folder to "addons/sourcemod" folder of your server
-* Install [round-respawn-detector](https://github.com/dronelektron/round-respawn-detector)
-
-### Console Variables
-
-* sm_trophyweapon_enable - Enable (1) or disable (0) plugin [default: "1"]
+* Download latest [release](https://github.com/dronelektron/trophy-weapon/releases)
+* Extract `plugins` and `translations` folders to `addons/sourcemod` folder of your server
