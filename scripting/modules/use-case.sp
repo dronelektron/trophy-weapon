@@ -32,9 +32,7 @@ void UseCase_GiveTrophyWeapons() {
 }
 
 void UseCase_GiveTrophyWeapon(int client) {
-    int index = Client_GetPendingIndex(client);
-
-    if (index == INDEX_NOT_FOUND) {
+    if (IsTropyInvalid(client)) {
         return;
     }
 
@@ -47,9 +45,7 @@ void UseCase_GiveTrophyWeapon(int client) {
 }
 
 void UseCase_CheckTrophyWeaponMode(int client) {
-    int index = Client_GetPendingIndex(client);
-
-    if (index == INDEX_NOT_FOUND) {
+    if (IsTropyInvalid(client)) {
         return;
     }
 
@@ -62,4 +58,10 @@ void UseCase_CheckTrophyWeaponMode(int client) {
     } else if (strcmp(cookieValue, COOKIE_TROPHY_MODE_GIVE_ALWAYS) == 0) {
         Frame_GiveTrophyWeapon(client);
     }
+}
+
+static bool IsTropyInvalid(int client) {
+    int index = Client_GetPendingIndex(client);
+
+    return index == INDEX_NOT_FOUND;
 }
