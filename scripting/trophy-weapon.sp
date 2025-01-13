@@ -8,65 +8,58 @@
 #include "trophy-weapon/use-case"
 #include "trophy-weapon/weapon"
 
-#include "modules/console-variable.sp"
 #include "modules/cookie.sp"
+#include "modules/client.sp"
 #include "modules/event.sp"
+#include "modules/frame.sp"
 #include "modules/menu.sp"
+#include "modules/hook.sp"
 #include "modules/use-case.sp"
 #include "modules/weapon.sp"
-
-#define AUTO_CREATE_YES true
-#define ROUND_RESPAWN_DETECTOR "round-respawn-detector"
 
 public Plugin myinfo = {
     name = "Trophy weapon",
     author = "Dron-elektron",
     description = "Allows you to carry trophy weapon to the next round",
-    version = "1.3.2",
+    version = "1.4.0",
     url = "https://github.com/dronelektron/trophy-weapon"
 };
 
-public void OnAllPluginsLoaded() {
-    if (!LibraryExists(ROUND_RESPAWN_DETECTOR)) {
-        SetFailState("Library '%s' is not found", ROUND_RESPAWN_DETECTOR);
-    }
-}
-
 public void OnPluginStart() {
     Cookie_Create();
-    Variable_Create();
     Event_Create();
-    Weapon_Create();
-    CookiesLateLoad();
     Menu_AddToPreferences();
+    Weapon_Create();
+    LateLoad();
     LoadTranslations("trophy-weapon.phrases");
-    AutoExecConfig(AUTO_CREATE_YES, "trophy-weapon");
-}
-
-public void OnPluginEnd() {
-    Weapon_Destroy();
 }
 
 public void OnClientConnected(int client) {
-    Weapon_ResetTrophy(client);
+    Client_Reset(client);
 }
 
 public void OnClientPutInServer(int client) {
-    UseCase_HookWeaponDrop(client);
+    Hook_WeaponEquipPost(client);
+    Hook_WeaponDropPost(client);
 }
 
 public void OnClientCookiesCached(int client) {
     Cookie_Load(client);
 }
 
-public void OnRoundRespawn() {
-    UseCase_DisableTrophyWeapons();
+static void LateLoad() {
+    for (int client = 1; client <= MaxClients; client++) {
+        if (IsClientInGame(client)) {
+            LoadClient(client);
+        }
+    }
 }
 
-void CookiesLateLoad() {
-    for (int i = 1; i <= MaxClients; i++) {
-        if (AreClientCookiesCached(i)) {
-            OnClientCookiesCached(i);
-        }
+static void LoadClient(int client) {
+    OnClientConnected(client);
+    OnClientPutInServer(client);
+
+    if (AreClientCookiesCached(client)) {
+        OnClientCookiesCached(client);
     }
 }
