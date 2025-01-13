@@ -30,7 +30,7 @@ public void OnPluginStart() {
     Event_Create();
     Menu_AddToPreferences();
     Weapon_Create();
-    LoadClients();
+    LateLoad();
     LoadTranslations("trophy-weapon.phrases");
 }
 
@@ -47,7 +47,7 @@ public void OnClientCookiesCached(int client) {
     Cookie_Load(client);
 }
 
-static void LoadClients() {
+static void LateLoad() {
     for (int client = 1; client <= MaxClients; client++) {
         if (IsClientInGame(client)) {
             LoadClient(client);
