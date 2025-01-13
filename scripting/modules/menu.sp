@@ -51,7 +51,7 @@ void Menu_GiveTrophyWeapon(int client) {
     Menu_AddAskItem(menu, ITEM_NO, client);
 
     menu.ExitButton = false;
-    menu.Display(client, ASK_FOR_TROPHY_WEAPON_TIME);
+    menu.Display(client, ASK_ABOUT_TROPHY_WEAPON_TIME);
 }
 
 public int MenuHandler_GiveTrophyWeapon(Menu menu, MenuAction action, int param1, int param2) {
@@ -62,8 +62,6 @@ public int MenuHandler_GiveTrophyWeapon(Menu menu, MenuAction action, int param1
 
         if (StrEqual(info, ITEM_YES)) {
             UseCase_GiveTrophyWeapon(param1);
-        } else {
-            Weapon_ResetTrophy(param1);
         }
     } else if (action == MenuAction_End) {
         delete menu;
