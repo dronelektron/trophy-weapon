@@ -6,7 +6,7 @@
 #define INFO_SIZE 128
 #define ITEM_SIZE 128
 
-#define ASK_ABOUT_TROPHY_WEAPON_TIME 10
+#define ASK_ABOUT_TROPHY_WEAPON_TIME 5
 
 #define TROPHY_WEAPON "Trophy weapon"
 #define ITEM_ASK "Ask"
