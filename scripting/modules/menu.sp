@@ -31,10 +31,8 @@ public int MenuHandler_Settings(Menu menu, MenuAction action, int param1, int pa
 
         Cookie_SetTrophyMode(param1, info);
         Menu_Settings(param1);
-    } else if (action == MenuAction_Cancel) {
-        if (param2 == MenuCancel_ExitBack) {
-            ShowCookieMenu(param1);
-        }
+    } else if (action == MenuAction_Cancel && param2 == MenuCancel_ExitBack) {
+        ShowCookieMenu(param1);
     } else if (action == MenuAction_End) {
         delete menu;
     }
