@@ -49,7 +49,7 @@ void UseCase_CheckTrophyWeaponMode(int client) {
     Cookie_GetTrophyMode(client, cookieValue);
 
     if (strcmp(cookieValue, COOKIE_TROPHY_MODE_ASK) == 0) {
-        Frame_AskAboutTrophyWeapon(client);
+        Timer_AskAboutTrophyWeapon(client);
     } else if (strcmp(cookieValue, COOKIE_TROPHY_MODE_GIVE_ALWAYS) == 0) {
         Frame_GiveTrophyWeapon(client);
     }
