@@ -5,15 +5,17 @@
 
 #include "trophy-weapon/cookie"
 #include "trophy-weapon/menu"
+#include "trophy-weapon/timer"
 #include "trophy-weapon/use-case"
 #include "trophy-weapon/weapon"
 
-#include "modules/cookie.sp"
 #include "modules/client.sp"
+#include "modules/cookie.sp"
 #include "modules/event.sp"
 #include "modules/frame.sp"
-#include "modules/menu.sp"
 #include "modules/hook.sp"
+#include "modules/menu.sp"
+#include "modules/timer.sp"
 #include "modules/use-case.sp"
 #include "modules/weapon.sp"
 
@@ -21,7 +23,7 @@ public Plugin myinfo = {
     name = "Trophy weapon",
     author = "Dron-elektron",
     description = "Allows you to carry trophy weapon to the next round",
-    version = "1.4.0",
+    version = "1.4.1",
     url = "https://github.com/dronelektron/trophy-weapon"
 };
 
