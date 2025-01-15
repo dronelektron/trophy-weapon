@@ -32,6 +32,23 @@ static const int g_ammo[] = {
     4    // weapon_pschreck
 };
 
+static const int g_ammoType[] = {
+    // Allies
+    4,  // weapon_garand
+    8,  // weapon_thompson
+    9,  // weapon_bar
+    7,  // weapon_spring
+    10, // weapon_30cal
+    12, // weapon_bazooka
+    // Axis
+    5,  // weapon_k98
+    8,  // weapon_mp40
+    8,  // weapon_mp44
+    5,  // weapon_k98_scoped
+    11, // weapon_mg42
+    12  // weapon_pschreck
+};
+
 static StringMap g_index;
 
 void Weapon_Create() {
@@ -58,14 +75,10 @@ bool Weapon_IsPrimaryIndex(int index) {
     return index > INDEX_NOT_FOUND;
 }
 
-void Weapon_GiveTrophy(int client) {
+void Weapon_GiveTrophy(int client, int index) {
     RemovePrimary(client);
-
-    int index = Client_GetPendingIndex(client);
-    int weapon = GivePlayerItem(client, g_weaponClassName[index]);
-
-    SetAsActive(client, weapon);
-    GiveAmmo(client, weapon);
+    GivePlayerItem(client, g_weaponClassName[index]);
+    GivePlayerAmmo(client, g_ammo[index], g_ammoType[index]);
 }
 
 static void RemovePrimary(int client) {
@@ -75,19 +88,4 @@ static void RemovePrimary(int client) {
         RemovePlayerItem(client, weapon);
         RemoveEntity(weapon);
     }
-}
-
-static void SetAsActive(int client, int weapon) {
-    SetEntPropEnt(client, Prop_Send, "m_hActiveWeapon", weapon);
-}
-
-static void GiveAmmo(int client, int weapon) {
-    int index = Weapon_GetIndex(weapon);
-    int ammoType = GetAmmoType(weapon);
-
-    GivePlayerAmmo(client, g_ammo[index], ammoType);
-}
-
-static int GetAmmoType(int weapon) {
-    return GetEntProp(weapon, Prop_Send, "m_iPrimaryAmmoType");
 }
