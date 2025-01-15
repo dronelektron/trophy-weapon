@@ -75,10 +75,9 @@ bool Weapon_IsPrimaryIndex(int index) {
     return index > INDEX_NOT_FOUND;
 }
 
-void Weapon_GiveTrophy(int client) {
+void Weapon_GiveTrophy(int client, int index) {
     RemovePrimary(client);
 
-    int index = Client_GetPendingIndex(client);
     int weapon = GivePlayerItem(client, g_weaponClassName[index]);
 
     SetAsActive(client, weapon);
