@@ -82,7 +82,7 @@ void Weapon_GiveTrophy(int client) {
     int weapon = GivePlayerItem(client, g_weaponClassName[index]);
 
     SetAsActive(client, weapon);
-    GiveAmmo(client, weapon);
+    GivePlayerAmmo(client, g_ammo[index], g_ammoType[index]);
 }
 
 static void RemovePrimary(int client) {
@@ -96,10 +96,4 @@ static void RemovePrimary(int client) {
 
 static void SetAsActive(int client, int weapon) {
     SetEntPropEnt(client, Prop_Send, "m_hActiveWeapon", weapon);
-}
-
-static void GiveAmmo(int client, int weapon) {
-    int index = Weapon_GetIndex(weapon);
-
-    GivePlayerAmmo(client, g_ammo[index], g_ammoType[index]);
 }
