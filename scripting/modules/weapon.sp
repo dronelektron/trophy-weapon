@@ -32,6 +32,23 @@ static const int g_ammo[] = {
     4    // weapon_pschreck
 };
 
+static const int g_ammoType[] = {
+    // Allies
+    4,  // weapon_garand
+    8,  // weapon_thompson
+    9,  // weapon_bar
+    7,  // weapon_spring
+    10, // weapon_30cal
+    12, // weapon_bazooka
+    // Axis
+    5,  // weapon_k98
+    8,  // weapon_mp40
+    8,  // weapon_mp44
+    5,  // weapon_k98_scoped
+    11, // weapon_mg42
+    12  // weapon_pschreck
+};
+
 static StringMap g_index;
 
 void Weapon_Create() {
@@ -83,11 +100,6 @@ static void SetAsActive(int client, int weapon) {
 
 static void GiveAmmo(int client, int weapon) {
     int index = Weapon_GetIndex(weapon);
-    int ammoType = GetAmmoType(weapon);
 
-    GivePlayerAmmo(client, g_ammo[index], ammoType);
-}
-
-static int GetAmmoType(int weapon) {
-    return GetEntProp(weapon, Prop_Send, "m_iPrimaryAmmoType");
+    GivePlayerAmmo(client, g_ammo[index], g_ammoType[index]);
 }
