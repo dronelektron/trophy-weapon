@@ -77,10 +77,7 @@ bool Weapon_IsPrimaryIndex(int index) {
 
 void Weapon_GiveTrophy(int client, int index) {
     RemovePrimary(client);
-
-    int weapon = GivePlayerItem(client, g_weaponClassName[index]);
-
-    SetAsActive(client, weapon);
+    GivePlayerItem(client, g_weaponClassName[index]);
     GivePlayerAmmo(client, g_ammo[index], g_ammoType[index]);
 }
 
@@ -91,8 +88,4 @@ static void RemovePrimary(int client) {
         RemovePlayerItem(client, weapon);
         RemoveEntity(weapon);
     }
-}
-
-static void SetAsActive(int client, int weapon) {
-    SetEntPropEnt(client, Prop_Send, "m_hActiveWeapon", weapon);
 }
